@@ -2,7 +2,7 @@
   "name": "acl-aws-workshop",
   "version": "1.0.0",
   "description": "AWS Workshop at Alchemy Code Labs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "pretest": "eslint .",
     "test": "mocha"
