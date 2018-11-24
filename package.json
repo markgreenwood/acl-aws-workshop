@@ -1,7 +1,7 @@
 {
-  "name": "node-template",
+  "name": "acl-aws-workshop",
   "version": "1.0.0",
-  "description": "Template for node server projects",
+  "description": "AWS Workshop at Alchemy Code Labs",
   "main": "index.js",
   "scripts": {
     "pretest": "eslint .",
@@ -20,5 +20,11 @@
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
     "prettier": "^1.15.2"
+  },
+  "dependencies": {
+    "good": "^8.1.1",
+    "good-console": "^7.1.0",
+    "good-squeeze": "^5.1.0",
+    "hapi": "^17.8.1"
   }
 }
