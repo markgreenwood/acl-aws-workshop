@@ -4,7 +4,7 @@ RUN apt-get update
 
 ARG APPDIR
 
-ADD ./app ${APPDIR}
+ADD src ${APPDIR}
 WORKDIR ${APPDIR}
 
 RUN npm install -q --production

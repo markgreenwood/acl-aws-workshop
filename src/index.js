@@ -38,10 +38,14 @@ const server = new Hapi.Server({ port: 9000 });
       {
         method: "GET",
         path: "/healthcheck",
-        handler: () => ({
-          name: pkg.name,
-          status: "OK",
-        }),
+        handler: () => {
+          const { name, version } = pkg;
+          return {
+            name,
+            version,
+            status: "OK",
+          };
+        },
       },
     ]);
 
