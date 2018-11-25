@@ -71,6 +71,11 @@ const setupRoutes = server => {
         return response;
       },
     },
+    {
+      method: "GET",
+      path: "/api/recipes",
+      handler: () => ({ recipes: [] }),
+    },
   ]);
 };
 
