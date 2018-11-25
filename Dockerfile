@@ -4,11 +4,11 @@ RUN apt-get update
 
 ARG APPDIR
 
-ADD src ${APPDIR}
+ADD . ${APPDIR}
 WORKDIR ${APPDIR}
 
 RUN npm install -q --production
 
 EXPOSE 9000
 
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]

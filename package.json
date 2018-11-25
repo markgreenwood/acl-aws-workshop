@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "pretest": "eslint .",
-    "test": "mocha"
+    "test": "mocha test/*.test.js"
   },
   "author": "Mark Greenwood",
   "license": "UNLICENSED",
@@ -25,6 +25,8 @@
     "good": "^8.1.1",
     "good-console": "^7.1.0",
     "good-squeeze": "^5.1.0",
-    "hapi": "^17.8.1"
+    "hapi": "^17.8.1",
+    "inert": "^5.1.2",
+    "ramda": "^0.26.0"
   }
 }
