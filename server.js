@@ -74,7 +74,7 @@ const setupRoutes = server => {
     {
       method: "GET",
       path: "/api/recipes",
-      handler: () => ({ recipes: [] }),
+      handler: () => ({ recipes: ["Chili", "Penne Puttanesca", "Banh Mi"] }),
     },
   ]);
 };

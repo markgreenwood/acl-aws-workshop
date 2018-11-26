@@ -1,7 +1,13 @@
 const assert = require("assert");
-// const R = require("ramda");
+const { expect } = require("chai");
+const R = require("ramda");
 
 const server = require("../server");
+
+const parseResponse = R.pipe(
+  R.prop("payload"),
+  JSON.parse
+);
 
 describe("The recipes API route", () => {
   let response;
@@ -12,11 +18,16 @@ describe("The recipes API route", () => {
       url: "/api/recipes",
     };
 
-    response = await server.inject(request);
+    response = await server.inject(request).then(parseResponse);
   });
 
-  it("should return a list of recipes", () => {
-    console.log(response.payload);
-    return assert(Array.isArray(JSON.parse(response.payload).recipes));
+  it("should return a list of recipes", () => assert(Array.isArray(response.recipes)));
+
+  it("should return three items", () => {
+    assert.equal(R.length(response.recipes), 3);
+  });
+
+  it("should return three specific items", () => {
+    expect(response.recipes).to.have.members(["Chili", "Banh Mi", "Penne Puttanesca"]);
   });
 });
