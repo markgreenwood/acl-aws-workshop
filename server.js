@@ -67,6 +67,7 @@ const setupRoutes = server => {
           name,
           version,
           status: "OK",
+          message: "Hello",
         };
         return response;
       },

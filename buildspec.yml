@@ -1,0 +1,24 @@
+version: 0.2
+
+env:
+  variables:
+    REPO_NAME: acl-aws-workshop
+
+phases:
+  install:
+    commands:
+      - apt-get update -y
+      - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+      - apt-get install -y nodejs
+  pre_build:
+    commands:
+      - cd app && npm install -q && npm test && cd ..
+      - $(aws ecr get-login --no-include-email --region $AWS_REGION)
+  build:
+    commands:
+      - rm -rf app/node_modules
+      - docker build --build-arg APPDIR=/sites/$REPO_NAME -t $REPO_NAME:$IMAGE_TAG .
+      - docker tag $REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:$IMAGE_TAG
+  post_build:
+    commands:
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:$IMAGE_TAG
